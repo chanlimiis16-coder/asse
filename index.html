@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -339,7 +340,7 @@
   
   <div id="profile" class="section">
     <div class="card">
-      <img src="10000773131.jpg" class="profile-img">
+      <img src="10000773131.png" class="profile-img">
       <h1 class="gaga-title">Jhon Lee Bag-ayan</h1>
       
       <div class="info-title">Personal Details</div>
@@ -529,14 +530,13 @@
     const butterflyCount = 15;
     for (let i = 0; i < butterflyCount; i++) {
       const b = document.createElement('img');
-      b.src = '10000773101.jpg'; // Updated butterfly image
+      b.src = '10000773101.png'; // Updated to .png
       b.className = 'butterfly';
       
-      // Starting from center "burst"
       const x = window.innerWidth / 2;
       const y = window.innerHeight / 2;
       
-      const speedX = (Math.random() - 0.5) * 6; // Slower speed per request
+      const speedX = (Math.random() - 0.5) * 6; 
       const speedY = (Math.random() - 0.5) * 6;
       
       b.style.left = x + 'px';
@@ -551,18 +551,16 @@
         b.x += b.sx;
         b.y += b.sy;
 
-        // Bounce logic
         if (b.x <= 0 || b.x >= window.innerWidth - 40) b.sx *= -1;
         if (b.y <= 0 || b.y >= window.innerHeight - 40) b.sy *= -1;
 
         b.el.style.left = b.x + 'px';
         b.el.style.top = b.y + 'px';
         
-        // Add a slight rotation based on direction
         const angle = Math.atan2(b.sy, b.sx) * (180 / Math.PI);
         b.el.style.transform = `rotate(${angle + 90}deg)`;
       });
-    }, 33); // Slower interval for smoothness
+    }, 33);
   }
 
   function startFire() {
