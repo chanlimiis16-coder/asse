@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -340,7 +339,7 @@
   
   <div id="profile" class="section">
     <div class="card">
-      <img src="1000077310.jpg" class="profile-img">
+      <img src="10000773131.jpg" class="profile-img">
       <h1 class="gaga-title">Jhon Lee Bag-ayan</h1>
       
       <div class="info-title">Personal Details</div>
@@ -530,15 +529,15 @@
     const butterflyCount = 15;
     for (let i = 0; i < butterflyCount; i++) {
       const b = document.createElement('img');
-      b.src = '1000077310.jpg'; // Your butterfly image
+      b.src = '10000773101.jpg'; // Updated butterfly image
       b.className = 'butterfly';
       
       // Starting from center "burst"
       const x = window.innerWidth / 2;
       const y = window.innerHeight / 2;
       
-      const speedX = (Math.random() - 0.5) * 10;
-      const speedY = (Math.random() - 0.5) * 10;
+      const speedX = (Math.random() - 0.5) * 6; // Slower speed per request
+      const speedY = (Math.random() - 0.5) * 6;
       
       b.style.left = x + 'px';
       b.style.top = y + 'px';
@@ -563,7 +562,7 @@
         const angle = Math.atan2(b.sy, b.sx) * (180 / Math.PI);
         b.el.style.transform = `rotate(${angle + 90}deg)`;
       });
-    }, 20);
+    }, 33); // Slower interval for smoothness
   }
 
   function startFire() {
