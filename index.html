@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bag-ayan, Jhon Lee | E-Portfolio</title>
+  <style>
+    /* 🕯️ VINTAGE COTTAGE & LINEN THEME */
+    :root {
+      --dark-sage: #7A8D5F; /* Darker, relaxed green */
+      --moss: #4F5D3D;
+      --parchment: #F5F5DC; /* Beige instead of white */
+      --cozy-brown: #3E2723;
+      --brick-red: #A52A2A; /* Brick color */
+      --fire-orange: #FF4500;
+      --border-tan: #D2B48C;
+      --envelope-paper: #FFFDF5;
+      --pastel-lime: #BCE261; /* User favorite color */
+    }
+
+    /* 🚫 GITHUB OVERRIDE */
+    header, #header_wrap, .github-corner, #project_title, .p-name {
+      display: none !important;
+    }
+
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      margin: 0 !important; 
+      padding: 0 !important; 
+      overflow-x: hidden; 
+      /* 🧶 FABRIC TEXTURE & PATTERNED WALLPAPER */
+      background-color: var(--dark-sage);
+      background-image: 
+        /* The Fabric Texture Grain */
+        url("https://www.transparenttextures.com/patterns/linen-design.png"),
+        /* The Diamond Pattern */
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 40px),
+        repeating-linear-gradient(-45deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 40px);
+      color: var(--cozy-brown);
+      position: relative;
+    }
+
+    /* 🦋 BUTTERFLY STYLE */
+    .butterfly {
+      position: fixed;
+      width: 40px; /* Adjust size as needed */
+      height: auto;
+      pointer-events: none;
+      z-index: 3000;
+      transition: transform 0.1s linear;
+    }
+
+    /* 🌫️ SMOKE / MIST EFFECT */
+    .smoke {
+      position: fixed;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999; 
+      filter: blur(40px);
+    }
+
+    /* 🔥 FIRE PARTICLES FOR CHIMNEY */
+    .fire {
+      position: absolute;
+      width: 15px; height: 15px;
+      background: var(--fire-orange);
+      border-radius: 50%;
+      filter: blur(4px);
+      z-index: 2;
+      bottom: 20px; /* Positioned inside fireplace opening */
+    }
+
+    /* 🛠️ NAVIGATION BAR - UPDATED TO ABSOLUTE */
+    .header-container { 
+      position: absolute; /* Changed from fixed to absolute so it moves when scrolling */
+      top: 0; 
+      width: 100%; 
+      z-index: 2000; 
+      background: var(--parchment); 
+      padding: 15px 0;
+      border-bottom: 4px solid var(--moss);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .navbar { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 10px;
+      padding: 0 10px; 
+      max-width: 90%; 
+      margin: 0 auto;
+    }
+    
+    @media (min-width: 600px) or (orientation: landscape) { 
+      .navbar { display: flex; justify-content: center; flex-wrap: nowrap; } 
+      .nav-btn { flex: 1; max-width: 200px; }
+    }
+    
+    /* Uniform Tab Styling */
+    .nav-btn, .magic-btn, .sub-btn, .envelope-btn { 
+      color: white; cursor: pointer; font-weight: bold; font-size: 12px; 
+      text-transform: uppercase; border: 1px solid var(--border-tan);
+      background: var(--moss); padding: 12px 5px;
+      border-radius: 8px; transition: 0.2s; text-align: center;
+      text-decoration: none; display: inline-block;
+      box-sizing: border-box;
+    }
+    .nav-btn:hover, .envelope-btn:hover {
+        background: var(--cozy-brown);
+        border-color: var(--parchment);
+    }
+
+    /* Lime Green Highlight for TOC and Conclusion tabs */
+    .magic-btn:hover, .sub-btn:hover, .magic-btn:focus, .sub-btn:focus {
+        background: var(--pastel-lime) !important;
+        color: var(--cozy-brown) !important;
+        box-shadow: 0 0 15px var(--pastel-lime);
+        border-color: var(--moss);
+    }
+
+    /* 🎹 PIANO TOGGLE */
+    .toggle-container { text-align: right; margin-bottom: 10px; }
+    .piano-toggle {
+      background: var(--parchment); border: 2px solid var(--moss);
+      color: var(--moss); padding: 5px 12px; border-radius: 20px;
+      font-size: 11px; font-weight: bold; cursor: pointer;
+    }
+
+    /* ⚡ VIOLENT SHAKE ANIMATION */
+    @keyframes violentShake {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      10% { transform: translate(-8px, -8px) rotate(-5deg); }
+      20% { transform: translate(8px, 8px) rotate(5deg); }
+      30% { transform: translate(-8px, 8px) rotate(-5deg); }
+      40% { transform: translate(8px, -8px) rotate(5deg); }
+      50% { transform: translate(-8px, -8px) rotate(-5deg); }
+      60% { transform: translate(8px, 8px) rotate(5deg); }
+      70% { transform: translate(-8px, 8px) rotate(-5deg); }
+      80% { transform: translate(8px, -8px) rotate(5deg); }
+      90% { transform: translate(-8px, -8px) rotate(-5deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    .shake-active { 
+      animation: violentShake 0.4s linear; 
+      background: var(--cozy-brown) !important;
+    }
+
+    .main-content { padding-top: 140px; padding-bottom: 40px; padding-left: 20px; padding-right: 20px; position: relative; z-index: 5; }
+    .section { display: none; max-width: 650px; margin: 0 auto 50px auto; }
+    
+    .card { 
+      background: var(--parchment); 
+      border: 8px double var(--border-tan); padding: 30px; border-radius: 5px; 
+      box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    /* Responsive Titles C & D */
+    .responsive-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        color: var(--cozy-brown);
+        border-bottom: 2px solid var(--moss);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 0;
+    }
+
+    /* Mobile Portrait */
+    @media (max-width: 600px) and (orientation: portrait) {
+        .responsive-title {
+            font-size: 18px; /* Fits one line */
+            text-align: center;
+        }
+    }
+    /* Landscape / Desktop */
+    @media (min-width: 601px) or (orientation: landscape) {
+        .responsive-title {
+            font-size: 30px; /* Bigger font */
+            text-align: left;
+        }
+    }
+
+    /* 🧱 CHIMNEY STYLING - Realistic Brick */
+    .chimney-wrapper {
+        text-align: center;
+        margin: 20px 0;
+    }
+    .chimney-instr {
+        color: var(--cozy-brown);
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 15px;
+        text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+    }
+    .chimney-box {
+        background-color: var(--brick-red);
+        /* Realistic Brick Pattern */
+        background-image: 
+            linear-gradient(335deg, #8B0000 23px, transparent 23px),
+            linear-gradient(155deg, #B22222 23px, transparent 23px),
+            linear-gradient(335deg, #8B0000 23px, transparent 23px),
+            linear-gradient(155deg, #B22222 23px, transparent 23px);
+        background-size: 58px 58px;
+        background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+        
+        border: 10px solid #5D4037;
+        padding: 40px 20px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px 10px 0 0;
+        box-shadow: inset 0 20px 50px rgba(0,0,0,0.5), 0 10px 20px rgba(0,0,0,0.3);
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    /* Fireplace opening at bottom */
+    .chimney-box::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 60px;
+        background: #1a1a1a; /* Dark inside */
+        border-radius: 30px 30px 0 0;
+        border: 4px solid #3E2723;
+        border-bottom: none;
+        z-index: 1;
+    }
+
+    /* ✉️ ENVELOPE BUTTON - Detailed & Realistic */
+    .envelope-btn {
+        width: 180px;
+        height: 110px;
+        background: var(--envelope-paper);
+        position: relative;
+        border: 2px solid #d4d4d4;
+        cursor: pointer;
+        z-index: 10;
+        transition: 0.3s;
+        margin: 0 auto;
+        padding: 0; 
+        border-radius: 4px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* The Triangular Flap */
+    .envelope-btn::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0; height: 0;
+        border-left: 90px solid transparent;
+        border-right: 90px solid transparent;
+        border-top: 60px solid #E5E5CA; /* flap color */
+        z-index: 11;
+        filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+    }
+    
+    /* Stitches and Button Detail */
+    .envelope-btn::before {
+        content: "";
+        position: absolute;
+        top: 45px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 25px;
+        height: 25px;
+        background: #8B0000; /* Red Wax Seal/Button */
+        border-radius: 50%;
+        z-index: 15;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        border: 2px solid #5D4037;
+    }
+
+    /* Stitches Effect */
+    .envelope-stitches {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        border: 2px dashed rgba(0,0,0,0.1);
+        pointer-events: none;
+        box-sizing: border-box;
+        z-index: 12;
+    }
+
+    .envelope-btn:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+    
+    .profile-img { 
+      width: 180px; height: 180px; border-radius: 50%; display: block; 
+      margin: 0 auto 20px; object-fit: cover; border: 6px solid var(--moss); 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+    }
+    
+    .gaga-title {
+      font-family: 'Poppins', sans-serif; font-size: 38px; font-weight: 700;
+      text-align: center; margin-bottom: 25px; text-transform: uppercase;
+      color: var(--cozy-brown); border-bottom: 2px solid var(--moss);
+    }
+
+    .info-title { 
+      color: var(--moss); border-bottom: 2px solid var(--moss); 
+      display: inline-block; margin: 25px 0 10px 0; font-weight: bold; 
+      font-size: 18px; text-transform: uppercase;
+    }
+
+    .details-list { list-style: square; padding-left: 20px; font-size: 15px; line-height: 1.8; color: #333; }
+
+    /* Uniform list buttons */
+    .magic-btn, .sub-btn { 
+      display: block; width: 100%; padding: 16px; margin: 12px 0; 
+      color: white;
+    }
+
+    .folder-content { display: none; padding-left: 15px; border-left: 2px dashed var(--moss); margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+<div class="header-container">
+  <div class="navbar">
+    <button class="nav-btn" onclick="toggleSection('profile', this)">A. Profile</button>
+    <button class="nav-btn" onclick="toggleSection('coverletter', this)">B. Cover Letter</button>
+    <button class="nav-btn" onclick="toggleSection('toc', this)">C. Table of Contents</button>
+    <button class="nav-btn" onclick="toggleSection('conclusion', this)">D. Conclusion</button>
+  </div>
+</div>
+
+<div class="main-content">
+  
+  <div id="profile" class="section">
+    <div class="card">
+      <img src="1000077310.jpg" class="profile-img">
+      <h1 class="gaga-title">Jhon Lee Bag-ayan</h1>
+      
+      <div class="info-title">Personal Details</div>
+      <ul class="details-list">
+        <li><b>Name:</b> Jhon Lee Bag-ayan</li>
+        <li><b>Age:</b> 20 years old</li>
+        <li><b>Birthdate:</b> October 16, 2005</li>
+        <li><b>Location:</b> Sallapadan Barrio, Sal-lapadan, Abra</li>
+        <li><b>Physical Stats:</b> 5’7” height | 54kg weight | Skinny build</li>
+        <li><b>Sexuality:</b> Gay</li>
+      </ul>
+
+      <div class="info-title">Personality & Lifestyle</div>
+      <ul class="details-list">
+        <li>Introverted; prefers spending time with small groups.</li>
+        <li>Has 2 cats and 12 dogs.</li>
+        <li>Favorite color is Pastel Lime Green (Hex #BCE261).</li>
+      </ul>
+
+      <div class="info-title">Hobbies & Interests</div>
+      <ul class="details-list">
+        <li><b>Musical Skills:</b> Plays piano and drums; currently learning guitar.</li>
+        <li><b>Music Genres:</b> Pop, Art Pop, Dance Pop, Hyperpop, Soft Pop, Pop-rap, and Vocal Jazz.</li>
+        <li><b>Favorite Artists:</b> Lady Gaga, Doja Cat, Ariana Grande, Beyonce, and Katy Perry.</li>
+        <li><b>Media:</b> Watches RuPaul’s Drag Race, Project Runway, and BL dramas.</li>
+      </ul>
+
+      <div class="info-title">Educational Journey</div>
+      <p style="text-align: justify; font-size: 15px; line-height: 1.8; text-indent: 30px;">
+        Teacher education was not my first choice; it was my "no choice." My original goal was to become a nurse, but my parents could not afford the nursing tuition. Because of this financial situation, I enrolled in the Bachelor of Elementary Education (BEED) program instead.
+      </p>
+      <p style="text-align: justify; font-size: 15px; line-height: 1.8; text-indent: 30px;">
+        Although I did not choose this path initially, I have seen significant improvement in my perspective. I found that teaching my younger siblings and cousins and helping them with their homework makes me happy. Seeing them learn has made me start to like the profession.
+      </p>
+      <p style="text-align: justify; font-size: 15px; line-height: 1.8; text-indent: 30px;">
+        I am now determined to finish this course. My goal is to use my observation skills and my growing interest in teaching to become a professional educator.
+      </p>
+
+      <hr style="margin: 35px 0; border: 0; border-top: 1px solid var(--border-tan);">
+      <p style="text-align:center; font-style: italic; font-weight: bold;">"I’m Born This Way."</p>
+      <p style="text-align:center; font-style: italic; font-size: 14px; color: #555;">
+        "There could be 100 people in a room and 99 of them don't believe in you, but all it takes is one and it changes your whole life."
+      </p>
+    </div>
+  </div>
+
+  <div id="coverletter" class="section">
+    <div class="card" style="padding:0; background: none; border:none; box-shadow:none;">
+        <div class="chimney-wrapper">
+            <div class="chimney-instr">Click the Envelope to Open the Letter</div>
+            <div class="chimney-box" id="chimney">
+                <div class="envelope-btn" onclick="playCrackSound(); jump('https://docs.google.com/document/d/1P2mB5uWY2c-GeLZZdeHwAkPedhq4mJ2b/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">
+                    <div class="envelope-stitches"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="toc" class="section">
+    <div class="card">
+      <div class="toggle-container">
+        <button class="piano-toggle" onclick="togglePianoMode()">🎹 Piano Mode: ON</button>
+      </div>
+      <h1 class="responsive-title">C. Table of Contents</h1>
+      
+      <p style="color: var(--cozy-brown); font-weight: bold; margin-top: 20px;">Introduction: The Following are contents are my activities for my E-Portfolio</p>
+      <p style="color: #666; font-size: 13px; margin-bottom: 20px;"><i><b>Note:</b> When Piano Mode is on, click once to play music or twice to open the file; when off, click once to open the file.</i></p>
+      
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(261.63)" onclick="handlePianoLogic(261.63, 'https://docs.google.com/document/d/1H9ulPY7UVBzIPoA1aSvoIlJ5XRBrww2B/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">a. Rubric</a>
+      
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(293.66)" onclick="handlePianoLogic(293.66, 'https://docs.google.com/document/d/1JLuc3s3zzNbXqU2dzd_YUiIhZ60dAvoT/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">b. GRASPS Model</a>
+      
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(329.63)" onclick="event.preventDefault(); if(pianoModeActive) playNote(329.63); toggleFolder('c1')">c.1. Affective Assessment Tool ▾</a>
+      
+      <div id="c1" class="folder-content">
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(349.23)" onclick="handlePianoLogic(349.23, 'https://docs.google.com/document/d/1uc4_b1zmWyG6PrpEWj1_N0cJYCj-M44W/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.1. Likert</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(392.00)" onclick="handlePianoLogic(392.00, 'https://docs.google.com/document/d/1T7XlKq6N6a6uCBp08ji75oegoN86Y43I/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.2. Sentence Completion</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(440.00)" onclick="handlePianoLogic(440.00, 'https://docs.google.com/document/d/1X8EG1jit_YKyeXAuQHDaNGcl7PUAZiYY/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.3. Semantic Differential</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(493.88)" onclick="handlePianoLogic(493.88, 'https://docs.google.com/document/d/19qhofB-WcGFzKcHbTEvC1kqMWkHSZ0Z_/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.4. Checklist</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(523.25)" onclick="handlePianoLogic(523.25, 'https://docs.google.com/document/d/16Qen8DrprjCD1NGs9obcax_aCOhKt1/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.5. Written Reflection</a>
+      </div>
+
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(392.00)" onclick="handlePianoLogic(392.00, 'https://docs.google.com/document/d/1gmVvK3AzEDvryYqod-fx3LG3fYEIBKih/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.2. Interview on Assessing Affective Domain</a>
+      
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(440.00)" onclick="handlePianoLogic(440.00, 'https://docs.google.com/document/d/1T6D_5zNhin4QT8LQWHWdeQkXBrN6_XNd/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">d. Favorable and Not Favorable</a>
+      
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(493.88)" onclick="handlePianoLogic(493.88, 'https://docs.google.com/document/d/19-ebKhqJvDAOBBgNlfdtLG79x3Twl06C/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">e.1. Pointers</a>
+      
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(523.25)" onclick="event.preventDefault(); if(pianoModeActive) playNote(523.25); toggleFolder('e2')">e.2. Simulation ▾</a>
+      <div id="e2" class="folder-content">
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(587.33)" onclick="handlePianoLogic(587.33, 'https://drive.google.com/file/d/1GGIcc10zKANGGSUl8Z1qZRK9izvCiLud/view?usp=drive_link')">Group Video</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(659.25)" onclick="handlePianoLogic(659.25, 'https://docs.google.com/document/d/1ue5hmNnVG0t1HhPqdYKUw72A4Ep1TakC/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">Reflection</a>
+      </div>
+      
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(698.46)" onclick="handlePianoLogic(698.46, 'https://docs.google.com/document/d/1P2mB5uWY2c-GeLZZdeHwAkP')">f. Slide 123</a>
+    </div>
+  </div>
+
+  <div id="conclusion" class="section">
+    <div class="card">
+      <div class="toggle-container">
+        <button class="piano-toggle" onclick="togglePianoMode()">🎹 Piano Mode: ON</button>
+      </div>
+      <h1 class="responsive-title">D. Conclusion</h1>
+      <p style="color: #666; font-size: 13px; margin-bottom: 20px;"><i><b>Note:</b> When Piano Mode is on, click once to play music or twice to open the file; when off, click once to open the file.</i></p>
+      
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(261.63)" onclick="handlePianoLogic(261.63, 'https://docs.google.com/document/d/1nHqdAGm7zQeF-C--dPFKlP0OtVv3d7zq/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">What I have learned</a>
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(293.66)" onclick="handlePianoLogic(293.66, 'https://docs.google.com/document/d/18zftT8wH0QmwO3XTQgVQuA5tgrjMB3w-/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">Letter to myself</a>
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(329.63)" onclick="handlePianoLogic(329.63, 'https://docs.google.com/document/d/10jMGJwc2XZdAkjJSSFJBshLLhoFMI7kF/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">Letter to my parent</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  let fireInterval = null;
+  let butterflyInterval = null;
+  let butterflies = [];
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  let pianoModeActive = true;
+  let lastTap = 0;
+
+  function togglePianoMode() {
+    pianoModeActive = !pianoModeActive;
+    document.querySelectorAll('.piano-toggle').forEach(btn => {
+      btn.innerText = pianoModeActive ? "🎹 Piano Mode: ON" : "🔇 Piano Mode: OFF";
+    });
+  }
+
+  function handlePianoLogic(freq, url) {
+    event.preventDefault(); 
+    if (!pianoModeActive) { jump(url); return; }
+    const now = Date.now();
+    const timesince = now - lastTap;
+    playNote(freq);
+    if (timesince < 350 && timesince > 0) jump(url);
+    lastTap = now;
+  }
+
+  function hoverNote(freq) { if (pianoModeActive) playNote(freq); }
+
+  function playNote(freq) {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.5);
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.start(); osc.stop(audioCtx.currentTime + 1.5);
+  }
+
+  function playCrackSound() {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(100, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.start(); osc.stop(audioCtx.currentTime + 0.05);
+  }
+
+  function toggleSection(id, btn) {
+    playCrackSound();
+    btn.classList.add('shake-active');
+    setTimeout(() => btn.classList.remove('shake-active'), 400); 
+    
+    const target = document.getElementById(id);
+    const isVisible = target.style.display === 'block';
+    
+    document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+    stopEffects();
+
+    if (!isVisible) {
+      target.style.display = 'block';
+      if (id === 'coverletter') startFire();
+      if (id === 'profile') startButterflies();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    } else {
+        target.style.display = 'none';
+    }
+  }
+
+  /* 🦋 BUTTERFLY LOGIC */
+  function startButterflies() {
+    const butterflyCount = 15;
+    for (let i = 0; i < butterflyCount; i++) {
+      const b = document.createElement('img');
+      b.src = '1000077310.jpg'; // Your butterfly image
+      b.className = 'butterfly';
+      
+      // Starting from center "burst"
+      const x = window.innerWidth / 2;
+      const y = window.innerHeight / 2;
+      
+      const speedX = (Math.random() - 0.5) * 10;
+      const speedY = (Math.random() - 0.5) * 10;
+      
+      b.style.left = x + 'px';
+      b.style.top = y + 'px';
+      
+      document.body.appendChild(b);
+      butterflies.push({ el: b, x, y, sx: speedX, sy: speedY });
+    }
+
+    butterflyInterval = setInterval(() => {
+      butterflies.forEach(b => {
+        b.x += b.sx;
+        b.y += b.sy;
+
+        // Bounce logic
+        if (b.x <= 0 || b.x >= window.innerWidth - 40) b.sx *= -1;
+        if (b.y <= 0 || b.y >= window.innerHeight - 40) b.sy *= -1;
+
+        b.el.style.left = b.x + 'px';
+        b.el.style.top = b.y + 'px';
+        
+        // Add a slight rotation based on direction
+        const angle = Math.atan2(b.sy, b.sx) * (180 / Math.PI);
+        b.el.style.transform = `rotate(${angle + 90}deg)`;
+      });
+    }, 20);
+  }
+
+  function startFire() {
+    const chimney = document.getElementById('chimney');
+    fireInterval = setInterval(() => {
+      const f = document.createElement('div');
+      f.className = 'fire';
+      const containerWidth = chimney.offsetWidth;
+      const openingWidth = 120;
+      const leftBoundary = (containerWidth / 2) - (openingWidth / 2) + 10;
+      const rightBoundary = (containerWidth / 2) + (openingWidth / 2) - 25;
+      const randomLeft = leftBoundary + Math.random() * (rightBoundary - leftBoundary);
+      f.style.left = randomLeft + 'px';
+      chimney.appendChild(f);
+      const anim = f.animate([
+        { bottom: '0px', opacity: 1, transform: 'scale(1)' },
+        { bottom: '50px', opacity: 0, transform: 'scale(0.3)' }
+      ], { duration: 800 + Math.random() * 500 });
+      anim.onfinish = () => f.remove();
+    }, 100);
+  }
+
+  function stopEffects() {
+    clearInterval(fireInterval);
+    clearInterval(butterflyInterval);
+    document.querySelectorAll('.fire').forEach(el => el.remove());
+    document.querySelectorAll('.butterfly').forEach(el => el.remove());
+    butterflies = [];
+  }
+
+  function toggleFolder(id) {
+    let el = document.getElementById(id);
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+  }
+
+  function jump(url) { if(url) window.open(url, '_blank'); }
+
+  window.onload = () => {
+      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+  };
+</script>
+
+</body>
+</html>
