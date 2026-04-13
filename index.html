@@ -16,6 +16,7 @@
       --border-tan: #D2B48C;
       --envelope-paper: #FFFDF5;
       --pastel-lime: #BCE261; /* User favorite color */
+      --original-green: #556B2F; /* Sub-tab shade closer to original */
     }
 
     /* 🚫 GITHUB OVERRIDE */
@@ -40,10 +41,10 @@
       position: relative;
     }
 
-    /* 🦋 BUTTERFLY STYLE - INCREASED VISIBILITY */
+    /* 🦋 BUTTERFLY STYLE */
     .butterfly {
       position: fixed;
-      width: 80px; /* Increased from 40px for better visibility */
+      width: 55px; /* Minimized to 55 */
       height: auto;
       pointer-events: none;
       z-index: 3000;
@@ -106,6 +107,12 @@
       text-decoration: none; display: inline-block;
       box-sizing: border-box;
     }
+
+    /* Capitalize Each Word for TOC and Conclusion items */
+    .magic-btn, .sub-btn {
+      text-transform: capitalize;
+    }
+
     .nav-btn:hover, .envelope-btn:hover {
         background: var(--cozy-brown);
         border-color: var(--parchment);
@@ -116,6 +123,11 @@
         color: var(--cozy-brown) !important;
         box-shadow: 0 0 15px var(--pastel-lime);
         border-color: var(--moss);
+    }
+
+    /* Style for nested sub-tabs (c.1.1, e.2.1, etc) */
+    .nested-sub-btn {
+      background: var(--original-green) !important;
     }
 
     /* 🎹 PIANO TOGGLE */
@@ -394,39 +406,39 @@
       <a href="#" class="magic-btn" onmouseenter="hoverNote(329.63)" onclick="event.preventDefault(); if(pianoModeActive) playNote(329.63); toggleFolder('c1')">c.1. Affective Assessment Tool ▾</a>
       
       <div id="c1" class="folder-content">
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(349.23)" onclick="handlePianoLogic(349.23, 'https://docs.google.com/document/d/1uc4_b1zmWyG6PrpEWj1_N0cJYCj-M44W/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.1. Likert</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(392.00)" onclick="handlePianoLogic(392.00, 'https://docs.google.com/document/d/1T7XlKq6N6a6uCBp08ji75oegoN86Y43I/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.2. Sentence Completion</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(440.00)" onclick="handlePianoLogic(440.00, 'https://docs.google.com/document/d/1X8EG1jit_YKyeXAuQHDaNGcl7PUAZiYY/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.3. Semantic Differential</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(493.88)" onclick="handlePianoLogic(493.88, 'https://docs.google.com/document/d/19qhofB-WcGFzKcHbTEvC1kqMWkHSZ0Z_/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.4. Checklist</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(523.25)" onclick="handlePianoLogic(523.25, 'https://docs.google.com/document/d/16Qen8DrprjCD1NGs9obcax_aCOhKt1/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.5. Written Reflection</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(349.23)" onclick="handlePianoLogic(349.23, 'https://docs.google.com/document/d/1uc4_b1zmWyG6PrpEWj1_N0cJYCj-M44W/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.1. Likert Scale</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(392.00)" onclick="handlePianoLogic(392.00, 'https://docs.google.com/document/d/1T7XlKq6N6a6uCBp08ji75oegoN86Y43I/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.2. Sentence Completion</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(440.00)" onclick="handlePianoLogic(440.00, 'https://docs.google.com/document/d/1X8EG1jit_YKyeXAuQHDaNGcl7PUAZiYY/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.3. Semantic Differential</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(493.88)" onclick="handlePianoLogic(493.88, 'https://docs.google.com/document/d/19qhofB-WcGFzKcHbTEvC1kqMWkHSZ0Z_/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.4. Checklist</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(523.25)" onclick="handlePianoLogic(523.25, 'https://docs.google.com/document/d/16Qen8DrprjCD1NGs9obcax_aCOhKt1/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.1.5. Written Reflection</a>
       </div>
 
-      <a href="#" class="magic-btn" onmouseenter="hoverNote(392.00)" onclick="handlePianoLogic(392.00, 'https://docs.google.com/document/d/1gmVvK3AzEDvryYqod-fx3LG3fYEIBKih/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.2. Interview on Assessing Affective Domain</a>
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(392.00)" onclick="handlePianoLogic(392.00, 'https://docs.google.com/document/d/1gmVvK3AzEDvryYqod-fx3LG3fYEIBKih/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">c.2. Interview On Assessing Affective Domain</a>
       
-      <a href="#" class="magic-btn" onmouseenter="hoverNote(440.00)" onclick="handlePianoLogic(440.00, 'https://docs.google.com/document/d/1T6D_5zNhin4QT8LQWHWdeQkXBrN6_XNd/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">d. Favorable and Not Favorable</a>
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(440.00)" onclick="handlePianoLogic(440.00, 'https://docs.google.com/document/d/1T6D_5zNhin4QT8LQWHWdeQkXBrN6_XNd/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">d. Favorable And Not Favorable</a>
       
       <a href="#" class="magic-btn" onmouseenter="hoverNote(493.88)" onclick="handlePianoLogic(493.88, 'https://docs.google.com/document/d/19-ebKhqJvDAOBBgNlfdtLG79x3Twl06C/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">e.1. Pointers</a>
       
       <a href="#" class="magic-btn" onmouseenter="hoverNote(523.25)" onclick="event.preventDefault(); if(pianoModeActive) playNote(523.25); toggleFolder('e2')">e.2. Simulation ▾</a>
       <div id="e2" class="folder-content">
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(587.33)" onclick="handlePianoLogic(587.33, 'https://drive.google.com/file/d/1GGIcc10zKANGGSUl8Z1qZRK9izvCiLud/view?usp=drive_link')">Group Video</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(659.25)" onclick="handlePianoLogic(659.25, 'https://docs.google.com/document/d/1ue5hmNnVG0t1HhPqdYKUw72A4Ep1TakC/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">Reflection</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(587.33)" onclick="handlePianoLogic(587.33, 'https://drive.google.com/file/d/1GGIcc10zKANGGSUl8Z1qZRK9izvCiLud/view?usp=drive_link')">Group Video</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(659.25)" onclick="handlePianoLogic(659.25, 'https://docs.google.com/document/d/1ue5hmNnVG0t1HhPqdYKUw72A4Ep1TakC/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">Reflection</a>
       </div>
       
       <a href="#" class="magic-btn" onmouseenter="hoverNote(698.46)" onclick="handlePianoLogic(698.46, 'https://docs.google.com/document/d/1P2mB5uWY2c-GeLZZdeHwAkP')">f. Slide 123</a>
       
-      <a href="#" class="magic-btn" onmouseenter="hoverNote(783.99)" onclick="event.preventDefault(); if(pianoModeActive) playNote(783.99); toggleFolder('g1')">G. SCHOOL RECORDS ▾</a>
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(783.99)" onclick="event.preventDefault(); if(pianoModeActive) playNote(783.99); toggleFolder('g1')">g. School Records ▾</a>
       <div id="g1" class="folder-content">
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(261.63)" onclick="handlePianoLogic(261.63, 'https://drive.google.com/file/d/1skkNf9KCO9F0A0XTqZ02Dzy_7vby0yM-/view?usp=drive_link')">SF-1</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(293.66)" onclick="handlePianoLogic(293.66, 'https://drive.google.com/file/d/1S6FBQAPpQwZzh3fKX8WWOvoncHWAjT4M/view?usp=drive_link')">SF-2</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(329.63)" onclick="handlePianoLogic(329.63, 'https://drive.google.com/file/d/18iykHsUfB6cf-D1SeAVLm36tCouWTaP9/view?usp=drive_link')">SF-3</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(349.23)" onclick="handlePianoLogic(349.23, 'https://drive.google.com/file/d/1Xzg8cRHPXtVU9dPfguIZc_BcvMDgl3GU/view?usp=drive_link')">SF-4</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(392.00)" onclick="handlePianoLogic(392.00, 'https://drive.google.com/file/d/1c8edN06L1wgddofw8UqKN4RFAZZtfsU1/view?usp=drive_link')">SF-5</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(440.00)" onclick="handlePianoLogic(440.00, 'https://drive.google.com/file/d/1s_b2K1y0dljrv69qa8V7yyjx4wwu_yOt/view?usp=drive_link')">SF-6</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(493.88)" onclick="handlePianoLogic(493.88, 'https://drive.google.com/file/d/1_Ba8d5tXVTjtvRXvbl-2Xd3HYNbZBF3H/view?usp=drive_link')">SF-7</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(523.25)" onclick="handlePianoLogic(523.25, 'https://drive.google.com/file/d/1BJX0Nc2Ai2iqMHfpZ4w5TKWCPCrZewLz/view?usp=drive_link')">SF-8</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(587.33)" onclick="handlePianoLogic(587.33, 'https://drive.google.com/file/d/14U1rGI2YjQbh27HdyID6xP0LDQRlpg3N/view?usp=drive_link')">SF-9</a>
-        <a href="#" class="sub-btn" onmouseenter="hoverNote(659.25)" onclick="handlePianoLogic(659.25, 'https://drive.google.com/file/d/1LxiT-lygaavLbLo3BbMUWy4ItBUg92KK/view?usp=drive_link')">SF-10</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(261.63)" onclick="handlePianoLogic(261.63, 'https://drive.google.com/file/d/1skkNf9KCO9F0A0XTqZ02Dzy_7vby0yM-/view?usp=drive_link')">Sf-1</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(293.66)" onclick="handlePianoLogic(293.66, 'https://drive.google.com/file/d/1S6FBQAPpQwZzh3fKX8WWOvoncHWAjT4M/view?usp=drive_link')">Sf-2</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(329.63)" onclick="handlePianoLogic(329.63, 'https://drive.google.com/file/d/18iykHsUfB6cf-D1SeAVLm36tCouWTaP9/view?usp=drive_link')">Sf-3</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(349.23)" onclick="handlePianoLogic(349.23, 'https://drive.google.com/file/d/1Xzg8cRHPXtVU9dPfguIZc_BcvMDgl3GU/view?usp=drive_link')">Sf-4</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(392.00)" onclick="handlePianoLogic(392.00, 'https://drive.google.com/file/d/1c8edN06L1wgddofw8UqKN4RFAZZtfsU1/view?usp=drive_link')">Sf-5</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(440.00)" onclick="handlePianoLogic(440.00, 'https://drive.google.com/file/d/1s_b2K1y0dljrv69qa8V7yyjx4wwu_yOt/view?usp=drive_link')">Sf-6</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(493.88)" onclick="handlePianoLogic(493.88, 'https://drive.google.com/file/d/1_Ba8d5tXVTjtvRXvbl-2Xd3HYNbZBF3H/view?usp=drive_link')">Sf-7</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(523.25)" onclick="handlePianoLogic(523.25, 'https://drive.google.com/file/d/1BJX0Nc2Ai2iqMHfpZ4w5TKWCPCrZewLz/view?usp=drive_link')">Sf-8</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(587.33)" onclick="handlePianoLogic(587.33, 'https://drive.google.com/file/d/14U1rGI2YjQbh27HdyID6xP0LDQRlpg3N/view?usp=drive_link')">Sf-9</a>
+        <a href="#" class="sub-btn nested-sub-btn" onmouseenter="hoverNote(659.25)" onclick="handlePianoLogic(659.25, 'https://drive.google.com/file/d/1LxiT-lygaavLbLo3BbMUWy4ItBUg92KK/view?usp=drive_link')">Sf-10</a>
       </div>
     </div>
   </div>
@@ -439,9 +451,9 @@
       <h1 class="responsive-title">D. Conclusion</h1>
       <p style="color: #666; font-size: 13px; margin-bottom: 20px;"><i><b>Note:</b> When Piano Mode is on, click once to play music or twice to open the file; when off, click once to open the file.</i></p>
       
-      <a href="#" class="magic-btn" onmouseenter="hoverNote(261.63)" onclick="handlePianoLogic(261.63, 'https://docs.google.com/document/d/1nHqdAGm7zQeF-C--dPFKlP0OtVv3d7zq/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">What I have learned</a>
-      <a href="#" class="magic-btn" onmouseenter="hoverNote(293.66)" onclick="handlePianoLogic(293.66, 'https://docs.google.com/document/d/18zftT8wH0QmwO3XTQgVQuA5tgrjMB3w-/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">Letter to myself</a>
-      <a href="#" class="magic-btn" onmouseenter="hoverNote(329.63)" onclick="handlePianoLogic(329.63, 'https://docs.google.com/document/d/10jMGJwc2XZdAkjJSSFJBshLLhoFMI7kF/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">Letter to my parent</a>
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(261.63)" onclick="handlePianoLogic(261.63, 'https://docs.google.com/document/d/1nHqdAGm7zQeF-C--dPFKlP0OtVv3d7zq/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">What I Have Learned</a>
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(293.66)" onclick="handlePianoLogic(293.66, 'https://docs.google.com/document/d/18zftT8wH0QmwO3XTQgVQuA5tgrjMB3w-/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">Letter To Myself</a>
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(329.63)" onclick="handlePianoLogic(329.63, 'https://docs.google.com/document/d/10jMGJwc2XZdAkjJSSFJBshLLhoFMI7kF/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">Letter To My Parent</a>
     </div>
   </div>
 </div>
@@ -453,6 +465,10 @@
   const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   let pianoModeActive = true;
   let lastTap = 0;
+  
+  // Fire Audio variables
+  let fireAudioOsc = null;
+  let fireAudioGain = null;
 
   function togglePianoMode() {
     pianoModeActive = !pianoModeActive;
@@ -479,7 +495,7 @@
     const gain = audioCtx.createGain();
     osc.type = 'triangle';
     osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-    gain.gain.setValueAtTime(1.5, audioCtx.currentTime); /* STRENGTHENED SOUND */
+    gain.gain.setValueAtTime(1.5, audioCtx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.5);
     osc.connect(gain); gain.connect(audioCtx.destination);
     osc.start(); osc.stop(audioCtx.currentTime + 1.5);
@@ -490,9 +506,43 @@
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
     osc.type = 'sawtooth'; osc.frequency.setValueAtTime(100, audioCtx.currentTime);
-    gain.gain.setValueAtTime(0.8, audioCtx.currentTime); /* STRENGTHENED SOUND */
+    gain.gain.setValueAtTime(0.8, audioCtx.currentTime); 
     osc.connect(gain); gain.connect(audioCtx.destination);
     osc.start(); osc.stop(audioCtx.currentTime + 0.05);
+  }
+
+  function startFireSound() {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    // Create a noise-like crackling sound
+    fireAudioOsc = audioCtx.createOscillator();
+    fireAudioGain = audioCtx.createGain();
+    
+    fireAudioOsc.type = 'brownian'; // Noise proxy
+    if(!fireAudioOsc.type) fireAudioOsc.type = 'sawtooth'; // fallback
+    
+    fireAudioOsc.frequency.setValueAtTime(40, audioCtx.currentTime);
+    fireAudioGain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+    
+    // Modulation for crackle
+    const lfo = audioCtx.createOscillator();
+    const lfoGain = audioCtx.createGain();
+    lfo.frequency.value = 10;
+    lfoGain.gain.value = 20;
+    lfo.connect(lfoGain);
+    lfoGain.connect(fireAudioOsc.frequency);
+    
+    fireAudioOsc.connect(fireAudioGain);
+    fireAudioGain.connect(audioCtx.destination);
+    
+    lfo.start();
+    fireAudioOsc.start();
+  }
+
+  function stopFireSound() {
+    if (fireAudioOsc) {
+      fireAudioOsc.stop();
+      fireAudioOsc = null;
+    }
   }
 
   function toggleSection(id, btn) {
@@ -505,10 +555,14 @@
     
     document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
     stopEffects();
+    stopFireSound();
 
     if (!isVisible) {
       target.style.display = 'block';
-      if (id === 'coverletter') startFire();
+      if (id === 'coverletter') {
+          startFire();
+          startFireSound();
+      }
       if (id === 'profile') startButterflies();
       window.scrollTo({top: 0, behavior: 'smooth'});
     } else {
@@ -541,8 +595,8 @@
         b.x += b.sx;
         b.y += b.sy;
 
-        if (b.x <= 0 || b.x >= window.innerWidth - 80) b.sx *= -1;
-        if (b.y <= 0 || b.y >= window.innerHeight - 80) b.sy *= -1;
+        if (b.x <= 0 || b.x >= window.innerWidth - 55) b.sx *= -1;
+        if (b.y <= 0 || b.y >= window.innerHeight - 55) b.sy *= -1;
 
         b.el.style.left = b.x + 'px';
         b.el.style.top = b.y + 'px';
