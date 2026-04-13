@@ -40,10 +40,10 @@
       position: relative;
     }
 
-    /* 🦋 BUTTERFLY STYLE */
+    /* 🦋 BUTTERFLY STYLE - INCREASED VISIBILITY */
     .butterfly {
       position: fixed;
-      width: 40px; /* Adjust size as needed */
+      width: 80px; /* Increased from 40px for better visibility */
       height: auto;
       pointer-events: none;
       z-index: 3000;
@@ -69,12 +69,12 @@
       border-radius: 50%;
       filter: blur(4px);
       z-index: 2;
-      bottom: 20px; /* Positioned inside fireplace opening */
+      bottom: 20px;
     }
 
-    /* 🛠️ NAVIGATION BAR - UPDATED TO ABSOLUTE */
+    /* 🛠️ NAVIGATION BAR */
     .header-container { 
-      position: absolute; /* Changed from fixed to absolute so it moves when scrolling */
+      position: absolute; 
       top: 0; 
       width: 100%; 
       z-index: 2000; 
@@ -98,7 +98,6 @@
       .nav-btn { flex: 1; max-width: 200px; }
     }
     
-    /* Uniform Tab Styling */
     .nav-btn, .magic-btn, .sub-btn, .envelope-btn { 
       color: white; cursor: pointer; font-weight: bold; font-size: 12px; 
       text-transform: uppercase; border: 1px solid var(--border-tan);
@@ -112,7 +111,6 @@
         border-color: var(--parchment);
     }
 
-    /* Lime Green Highlight for TOC and Conclusion tabs */
     .magic-btn:hover, .sub-btn:hover, .magic-btn:focus, .sub-btn:focus {
         background: var(--pastel-lime) !important;
         color: var(--cozy-brown) !important;
@@ -158,7 +156,6 @@
       position: relative;
     }
 
-    /* Responsive Titles C & D */
     .responsive-title {
         font-family: 'Poppins', sans-serif;
         font-weight: 700;
@@ -170,36 +167,24 @@
         margin-top: 0;
     }
 
-    /* Mobile Portrait */
     @media (max-width: 600px) and (orientation: portrait) {
         .responsive-title {
-            font-size: 18px; /* Fits one line */
+            font-size: 18px;
             text-align: center;
         }
     }
-    /* Landscape / Desktop */
     @media (min-width: 601px) or (orientation: landscape) {
         .responsive-title {
-            font-size: 30px; /* Bigger font */
+            font-size: 30px;
             text-align: left;
         }
     }
 
-    /* 🧱 CHIMNEY STYLING - Realistic Brick */
-    .chimney-wrapper {
-        text-align: center;
-        margin: 20px 0;
-    }
-    .chimney-instr {
-        color: var(--cozy-brown);
-        font-weight: bold;
-        font-size: 18px;
-        margin-bottom: 15px;
-        text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
-    }
+    /* 🧱 CHIMNEY STYLING */
+    .chimney-wrapper { text-align: center; margin: 20px 0; }
+    .chimney-instr { color: var(--cozy-brown); font-weight: bold; font-size: 18px; margin-bottom: 15px; text-shadow: 1px 1px 1px rgba(255,255,255,0.5); }
     .chimney-box {
         background-color: var(--brick-red);
-        /* Realistic Brick Pattern */
         background-image: 
             linear-gradient(335deg, #8B0000 23px, transparent 23px),
             linear-gradient(155deg, #B22222 23px, transparent 23px),
@@ -207,7 +192,6 @@
             linear-gradient(155deg, #B22222 23px, transparent 23px);
         background-size: 58px 58px;
         background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
-        
         border: 10px solid #5D4037;
         padding: 40px 20px;
         position: relative;
@@ -220,7 +204,6 @@
         align-items: center;
         justify-content: center;
     }
-    /* Fireplace opening at bottom */
     .chimney-box::before {
         content: '';
         position: absolute;
@@ -229,14 +212,14 @@
         transform: translateX(-50%);
         width: 120px;
         height: 60px;
-        background: #1a1a1a; /* Dark inside */
+        background: #1a1a1a;
         border-radius: 30px 30px 0 0;
         border: 4px solid #3E2723;
         border-bottom: none;
         z-index: 1;
     }
 
-    /* ✉️ ENVELOPE BUTTON - Detailed & Realistic */
+    /* ✉️ ENVELOPE BUTTON */
     .envelope-btn {
         width: 180px;
         height: 110px;
@@ -252,37 +235,32 @@
         box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     
-    /* The Triangular Flap */
     .envelope-btn::after {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 0; left: 0;
         width: 0; height: 0;
         border-left: 90px solid transparent;
         border-right: 90px solid transparent;
-        border-top: 60px solid #E5E5CA; /* flap color */
+        border-top: 60px solid #E5E5CA;
         z-index: 11;
         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
     }
     
-    /* Stitches and Button Detail */
     .envelope-btn::before {
         content: "";
         position: absolute;
         top: 45px;
         left: 50%;
         transform: translateX(-50%);
-        width: 25px;
-        height: 25px;
-        background: #8B0000; /* Red Wax Seal/Button */
+        width: 25px; height: 25px;
+        background: #8B0000;
         border-radius: 50%;
         z-index: 15;
         box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         border: 2px solid #5D4037;
     }
 
-    /* Stitches Effect */
     .envelope-stitches {
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
@@ -314,7 +292,6 @@
 
     .details-list { list-style: square; padding-left: 20px; font-size: 15px; line-height: 1.8; color: #333; }
 
-    /* Uniform list buttons */
     .magic-btn, .sub-btn { 
       display: block; width: 100%; padding: 16px; margin: 12px 0; 
       color: white;
@@ -438,7 +415,19 @@
       
       <a href="#" class="magic-btn" onmouseenter="hoverNote(698.46)" onclick="handlePianoLogic(698.46, 'https://docs.google.com/document/d/1P2mB5uWY2c-GeLZZdeHwAkP')">f. Slide 123</a>
       
-      <a href="#" class="magic-btn" onmouseenter="hoverNote(783.99)" onclick="handlePianoLogic(783.99, 'https://docs.google.com/document/d/1Tne2uSKKqP6BbjaOGzAbkEh2UySmoxJi/edit?usp=drive_link&ouid=116787142773177870820&rtpof=true&sd=true')">G. SCHOOL FORMS</a>
+      <a href="#" class="magic-btn" onmouseenter="hoverNote(783.99)" onclick="event.preventDefault(); if(pianoModeActive) playNote(783.99); toggleFolder('g1')">G. SCHOOL RECORDS ▾</a>
+      <div id="g1" class="folder-content">
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(261.63)" onclick="handlePianoLogic(261.63, 'https://drive.google.com/file/d/1skkNf9KCO9F0A0XTqZ02Dzy_7vby0yM-/view?usp=drive_link')">SF-1</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(293.66)" onclick="handlePianoLogic(293.66, 'https://drive.google.com/file/d/1S6FBQAPpQwZzh3fKX8WWOvoncHWAjT4M/view?usp=drive_link')">SF-2</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(329.63)" onclick="handlePianoLogic(329.63, 'https://drive.google.com/file/d/18iykHsUfB6cf-D1SeAVLm36tCouWTaP9/view?usp=drive_link')">SF-3</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(349.23)" onclick="handlePianoLogic(349.23, 'https://drive.google.com/file/d/1Xzg8cRHPXtVU9dPfguIZc_BcvMDgl3GU/view?usp=drive_link')">SF-4</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(392.00)" onclick="handlePianoLogic(392.00, 'https://drive.google.com/file/d/1c8edN06L1wgddofw8UqKN4RFAZZtfsU1/view?usp=drive_link')">SF-5</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(440.00)" onclick="handlePianoLogic(440.00, 'https://drive.google.com/file/d/1s_b2K1y0dljrv69qa8V7yyjx4wwu_yOt/view?usp=drive_link')">SF-6</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(493.88)" onclick="handlePianoLogic(493.88, 'https://drive.google.com/file/d/1_Ba8d5tXVTjtvRXvbl-2Xd3HYNbZBF3H/view?usp=drive_link')">SF-7</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(523.25)" onclick="handlePianoLogic(523.25, 'https://drive.google.com/file/d/1BJX0Nc2Ai2iqMHfpZ4w5TKWCPCrZewLz/view?usp=drive_link')">SF-8</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(587.33)" onclick="handlePianoLogic(587.33, 'https://drive.google.com/file/d/14U1rGI2YjQbh27HdyID6xP0LDQRlpg3N/view?usp=drive_link')">SF-9</a>
+        <a href="#" class="sub-btn" onmouseenter="hoverNote(659.25)" onclick="handlePianoLogic(659.25, 'https://drive.google.com/file/d/1LxiT-lygaavLbLo3BbMUWy4ItBUg92KK/view?usp=drive_link')">SF-10</a>
+      </div>
     </div>
   </div>
 
@@ -490,7 +479,7 @@
     const gain = audioCtx.createGain();
     osc.type = 'triangle';
     osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-    gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+    gain.gain.setValueAtTime(1.5, audioCtx.currentTime); /* STRENGTHENED SOUND */
     gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.5);
     osc.connect(gain); gain.connect(audioCtx.destination);
     osc.start(); osc.stop(audioCtx.currentTime + 1.5);
@@ -501,7 +490,7 @@
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
     osc.type = 'sawtooth'; osc.frequency.setValueAtTime(100, audioCtx.currentTime);
-    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.8, audioCtx.currentTime); /* STRENGTHENED SOUND */
     osc.connect(gain); gain.connect(audioCtx.destination);
     osc.start(); osc.stop(audioCtx.currentTime + 0.05);
   }
@@ -527,12 +516,11 @@
     }
   }
 
-  /* 🦋 BUTTERFLY LOGIC */
   function startButterflies() {
     const butterflyCount = 15;
     for (let i = 0; i < butterflyCount; i++) {
       const b = document.createElement('img');
-      b.src = '10000773101.png'; // Updated to .png
+      b.src = '10000773101.png'; 
       b.className = 'butterfly';
       
       const x = window.innerWidth / 2;
@@ -553,8 +541,8 @@
         b.x += b.sx;
         b.y += b.sy;
 
-        if (b.x <= 0 || b.x >= window.innerWidth - 40) b.sx *= -1;
-        if (b.y <= 0 || b.y >= window.innerHeight - 40) b.sy *= -1;
+        if (b.x <= 0 || b.x >= window.innerWidth - 80) b.sx *= -1;
+        if (b.y <= 0 || b.y >= window.innerHeight - 80) b.sy *= -1;
 
         b.el.style.left = b.x + 'px';
         b.el.style.top = b.y + 'px';
