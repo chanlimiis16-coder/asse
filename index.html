@@ -369,10 +369,10 @@
       </p>
 
       <hr style="margin: 35px 0; border: 0; border-top: 1px solid var(--border-tan);">
-      <p style="text-align:center; font-style: italic; font-weight: bold;">"I’m Born This Way."</p>
       <p style="text-align:center; font-style: italic; font-size: 14px; color: #555;">
         "There could be 100 people in a room and 99 of them don't believe in you, but all it takes is one and it changes your whole life."
       </p>
+      <p style="text-align:center; font-style: italic; font-weight: bold;">"I’M BORN THIS WAY."</p>
     </div>
   </div>
 
@@ -467,8 +467,8 @@
   let lastTap = 0;
   
   // Fire Audio variables
-  let fireAudioOsc = null;
-  let fireAudioGain = null;
+  let fireNoiseSource = null;
+  let fireGainNode = null;
 
   function togglePianoMode() {
     pianoModeActive = !pianoModeActive;
@@ -511,37 +511,50 @@
     osc.start(); osc.stop(audioCtx.currentTime + 0.05);
   }
 
+  /* 🔥 UPDATED: LOUDER FIRE CRACKLE LOGIC */
   function startFireSound() {
     if (audioCtx.state === 'suspended') audioCtx.resume();
-    // Create a noise-like crackling sound
-    fireAudioOsc = audioCtx.createOscillator();
-    fireAudioGain = audioCtx.createGain();
     
-    fireAudioOsc.type = 'brownian'; // Noise proxy
-    if(!fireAudioOsc.type) fireAudioOsc.type = 'sawtooth'; // fallback
-    
-    fireAudioOsc.frequency.setValueAtTime(40, audioCtx.currentTime);
-    fireAudioGain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-    
-    // Modulation for crackle
-    const lfo = audioCtx.createOscillator();
-    const lfoGain = audioCtx.createGain();
-    lfo.frequency.value = 10;
-    lfoGain.gain.value = 20;
-    lfo.connect(lfoGain);
-    lfoGain.connect(fireAudioOsc.frequency);
-    
-    fireAudioOsc.connect(fireAudioGain);
-    fireAudioGain.connect(audioCtx.destination);
-    
-    lfo.start();
-    fireAudioOsc.start();
+    const bufferSize = 2 * audioCtx.sampleRate;
+    const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+    const output = noiseBuffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+        output[i] = Math.random() * 2 - 1;
+    }
+
+    fireNoiseSource = audioCtx.createBufferSource();
+    fireNoiseSource.buffer = noiseBuffer;
+    fireNoiseSource.loop = true;
+
+    // Filter to make it sound "deep" and "earthy" like burning wood
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 400;
+
+    fireGainNode = audioCtx.createGain();
+    fireGainNode.gain.setValueAtTime(1.2, audioCtx.currentTime); // HIGH VOLUME
+
+    // Amplitude modulation to simulate the "cracking" peaks
+    const crackleOsc = audioCtx.createOscillator();
+    const crackleGain = audioCtx.createGain();
+    crackleOsc.type = 'square';
+    crackleOsc.frequency.value = 0.5; // slow variations
+    crackleGain.gain.value = 0.3;
+    crackleOsc.connect(crackleGain);
+    crackleGain.connect(fireGainNode.gain);
+
+    fireNoiseSource.connect(filter);
+    filter.connect(fireGainNode);
+    fireGainNode.connect(audioCtx.destination);
+
+    crackleOsc.start();
+    fireNoiseSource.start();
   }
 
   function stopFireSound() {
-    if (fireAudioOsc) {
-      fireAudioOsc.stop();
-      fireAudioOsc = null;
+    if (fireNoiseSource) {
+      fireNoiseSource.stop();
+      fireNoiseSource = null;
     }
   }
 
